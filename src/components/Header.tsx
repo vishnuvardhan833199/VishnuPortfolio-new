@@ -1,101 +1,47 @@
-import type { FC } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
-
-interface Section {
-  id: string;
-  label: string;
-}
+import { FC } from 'react';
+import { motion } from 'framer-motion';
 
 interface HeaderProps {
-  activeSection: Section;
-  onSectionChange: (index: number) => void;
-  sections: Section[];
+  activeSection: string;
+  onSectionChange: (section: string) => void;
+  sections: string[];
 }
 
 const Header: FC<HeaderProps> = ({ activeSection, onSectionChange, sections }) => {
-  const location = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/education', label: 'Education' },
-    { path: '/skills', label: 'Skills' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/internships', label: 'Internships' },
-    { path: '/certificates', label: 'Certificates' },
-    { path: '/contact', label: 'Contact' }
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
   return (
-    <motion.header
-      className="fixed top-0 left-0 w-full z-50 py-4"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex justify-center items-center relative">
-          {/* Active section indicator */}
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800">
+      <div className="container mx-auto px-4 py-4">
+        <nav className="flex justify-between items-center">
           <motion.div
-            className="absolute left-1/2 transform -translate-x-1/2 glass rounded-full p-6"
-            layoutId="activeSection"
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-2xl font-bold text-white"
           >
-            <motion.h1 
-              className="text-2xl font-bold text-gradient text-shadow-glow"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.3 }}
-            >
-              {activeSection.label}
-            </motion.h1>
+            Vishnu Vardhan
           </motion.div>
 
-          {/* Hidden navigation menu */}
-          <nav className="hidden">
-            {sections.map((section, index) => (
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="hidden md:flex space-x-6"
+          >
+            {sections.map((section) => (
               <button
-                key={section.id}
-                onClick={() => onSectionChange(index)}
-                className="text-gray-400 hover:text-white transition-colors"
+                key={section}
+                onClick={() => onSectionChange(section)}
+                className={`text-lg ${
+                  activeSection === section
+                    ? 'text-blue-400 font-medium'
+                    : 'text-gray-300 hover:text-white'
+                } transition-colors`}
               >
-                {section.label}
+                {section}
               </button>
             ))}
-          </nav>
-        </div>
+          </motion.div>
+        </nav>
       </div>
-    </motion.header>
+    </header>
   );
 };
 
