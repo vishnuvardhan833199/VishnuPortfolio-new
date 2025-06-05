@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Navigation from './components/Navigation';
+import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import About from './components/About';
 import Education from './components/Education';
@@ -23,21 +24,29 @@ const App = () => {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gray-900 text-white">
-        <Navigation />
-        <main className="pl-16 w-full min-h-screen">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/education" element={<Education />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/coding-profiles" element={<CodingProfiles />} />
-            <Route path="/certificates" element={<Certificates />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-      </div>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route
+          path="/*"
+          element={
+            <div className="min-h-screen bg-gray-900 text-white">
+              <Navigation />
+              <main className="pl-16 w-full min-h-screen">
+                <Routes>
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/education" element={<Education />} />
+                  <Route path="/skills" element={<Skills />} />
+                  <Route path="/projects" element={<Projects />} />
+                  <Route path="/coding-profiles" element={<CodingProfiles />} />
+                  <Route path="/certificates" element={<Certificates />} />
+                  <Route path="/contact" element={<Contact />} />
+                </Routes>
+              </main>
+            </div>
+          }
+        />
+      </Routes>
     </Router>
   );
 };
