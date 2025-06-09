@@ -7,7 +7,7 @@ const Projects = () => {
       title: "California House Price Prediction",
       description: "Implemented a machine learning model using Ridge Regression to predict house prices in California, with a user-friendly Flask web interface for real-time predictions.",
       technologies: ["Python", "Scikit-learn", "Flask", "Pandas", "Numpy"],
-      github: "https://github.com/vishnuvardhan833199/california-house-price",
+      github: "https://github.com/vishnuvardhan833199/California_House_Prediction",
       image: "/projects/house-price.jpg",
       details: [
         "Implemented data preprocessing and feature engineering on the California housing dataset",

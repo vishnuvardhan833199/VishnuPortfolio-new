@@ -38,7 +38,7 @@ export const projects: Project[] = [
       'Flask web interface for predictions',
       'Interactive user input handling'
     ],
-    githubUrl: 'https://github.com/vishnuvardhan833199/california-house-price'
+    githubUrl: 'https://github.com/vishnuvardhan833199/California_House_Prediction'
   },
   {
     id: 'food-app',
