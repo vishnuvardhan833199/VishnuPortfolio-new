@@ -59,7 +59,7 @@ export const projects: Project[] = [
       'Order placement and tracking',
       'Responsive design for all devices'
     ],
-    githubUrl: 'https://github.com/vishnuvardhan833199/food-app',
+    githubUrl: 'https://github.com/vishnuvardhan833199/foodie-xpress-ui',
     demoUrl: 'https://food-app-demo.com'
   }
 ];

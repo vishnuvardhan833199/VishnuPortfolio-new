@@ -21,7 +21,7 @@ const Projects = () => {
       title: "Food App Interface",
       description: "A modern full-stack food delivery application built with React.js and Tailwind CSS, featuring a clean and responsive design with seamless user experience.",
       technologies: ["React.js", "Tailwind CSS", "JavaScript", "Node.js"],
-      github: "https://github.com/vishnuvardhan833199/food-app",
+      github: "https://github.com/vishnuvardhan833199/foodie-xpress-ui",
       live: "https://food-app-demo.vercel.app",
       image: "/projects/food-app.jpg",
       details: [
